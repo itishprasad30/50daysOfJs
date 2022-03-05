@@ -27,7 +27,7 @@ interface Data {
 let data:Data = {
     artist:true,
     age:20,
-    persons:['hailee Stanfield','The Weeknd','Taylor Swift','Ed shreen']   ,
+    persons:['hailee Stanfield','The Weeknd','Taylor Swift','Ed shreen','one direction','bts','hailee bieber']   ,
     price:[1,2,3,4,5,6,7,8,9,10]
 
 }
@@ -38,3 +38,9 @@ console.log(reduceData)
 let filterData:string[] = data.persons.filter(name => name.toLowerCase() === 'ed shreen')
 
 console.log(filterData)
+
+
+// includes is greate for searching createAsExpression
+
+const searchData = data.persons.filter(name => name.toLowerCase().includes('hailee'))
+console.log(searchData)// it returns the search data present
