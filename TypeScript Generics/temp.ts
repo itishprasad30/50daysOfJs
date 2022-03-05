@@ -44,3 +44,28 @@ const makeArr = <T,Y = number> (x:T ,y:Y) :[T,Y] => {
 const v = makeArr(222,1212)
 const v2 = makeArr<string| null>('string',2)
 console.log(v,v2)
+
+// constraints
+
+const makeFullName = <T extends {firstName:string,lastName:string}>(obj:T) =>{
+    return {
+        ...obj,
+        fullName:obj.firstName+ ' '+obj.lastName
+    }
+}
+
+const v4 = makeFullName({firstName:'taylor',lastName:'swift',age:32})
+console.log(v4.fullName) 
+
+
+
+// generics with interface
+
+interface Tab <T>  {
+    id:string;
+    position:number
+    data: T;
+}
+
+type NumberTab = Tab<number>
+type StringTab = Tab <string>
