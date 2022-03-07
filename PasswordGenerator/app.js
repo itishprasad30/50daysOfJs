@@ -69,7 +69,7 @@ const generatePassword = (
     const randomIndex = Math.floor(Math.random() * availableCharacters.length);
     password += availableCharacters[randomIndex];
   }
-  console.log(password);
+  // console.log(password);
   return password;
 };
 
