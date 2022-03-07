@@ -1,3 +1,20 @@
+const characterAmountRange = document.getElementById("CharAmountRange");
+const characterAmountNumber = document.getElementById("CharAmountNumber");
+const form = document.getElementById("passwordGeneratorForm");
+
+characterAmountNumber.addEventListener("input", syncCharAmount);
+characterAmountRange.addEventListener("input", syncCharAmount);
+
+function syncCharAmount(e) {
+  const value = e.target.value;
+  characterAmountNumber.value = value;
+  characterAmountRange.value = value;
+}
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 const symbols = ["@", "*", "#", "%", "$"];
 
