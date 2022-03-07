@@ -1,4 +1,4 @@
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 const symbols = ["@", "*", "#", "%", "$"];
 
 const characterCodes = Array.from(Array(26)).map((_, i) => i + 97);
@@ -26,7 +26,15 @@ const generatePassword = (
     ...(hasLowerCase ? lowerCaseLetters : []),
     ...(hasUpperCase ? upperCaseLetters : []),
   ];
-  console.log(availableCharacters);
+  //   console.log(availableCharacters);
+  let password = "";
+  if (availableCharacters.length === 0) return "";
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * availableCharacters.length);
+    password += availableCharacters[randomIndex];
+  }
+  return password;
 };
 
-generatePassword(10, true, true, true, true);
+const result = generatePassword(10, true, true, true, true);
+console.log(result);
