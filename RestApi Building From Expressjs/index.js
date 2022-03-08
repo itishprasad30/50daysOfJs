@@ -6,13 +6,15 @@ const PORT = 8080;
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  //   console.log("HOME route");
-  //   res.download("./index.js");
-  //   res.send({ message: "Hello" });
+app.use(express.static("public"));
 
-  res.send("User List");
-});
+// app.get("/", (req, res) => {
+//   //   console.log("HOME route");
+//   //   res.download("./index.js");
+//   //   res.send({ message: "Hello" });
+
+//   res.send("User List");
+// });
 
 // Routing custom
 const userRouter = require("./routes/user");
