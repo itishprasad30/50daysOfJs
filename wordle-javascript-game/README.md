@@ -13,9 +13,9 @@ it will check to the word you enter and the orginal word that fetch from server.
 
 if it matchs then you Winnnnnnn.
 
-other wise you have 5times more to guess the word
+other wise you have 5 times more to guess the word
 
-## Note
+## Note :tent:
 
 - **green** means the Right word
 - **yellow** means the Word is in the row.
