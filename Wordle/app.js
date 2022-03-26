@@ -1,17 +1,38 @@
-let grid = document.getElementById("grid");
-
-let wordList = [
-  // "apple",
-  "horse",
-  // "music",
-  // "pintu"
-];
-
+let wordList = ["apple", "horse", "music", "pintu", "water", "pizza"];
 let randomIndex = Math.floor(Math.random() * wordList.length);
 let secret = wordList[randomIndex];
-
-let attempts = ["rohan"];
+let history = [];
 let currentAttempt = "";
+let counter = 0;
+
+let grid = document.getElementById("grid");
+
+buildGrid();
+updateGrid();
+window.addEventListener("keydown", handleKey);
+function handleKey(e) {
+  let keyLetter = e.key.toLowerCase();
+  if (keyLetter === "enter") {
+    //   todo
+    if (currentAttempt.length < 5) {
+      return;
+    }
+    if (!wordList.includes(currentAttempt)) {
+      alert("Not in My dictnanory");
+      return;
+    }
+    history.push(currentAttempt);
+    currentAttempt = "";
+  } else if (keyLetter === "backspace") {
+    //   ...
+    currentAttempt = currentAttempt.slice(0, currentAttempt.length - 1);
+  } else if (/[a-z]/.test(keyLetter)) {
+    if (currentAttempt.length < 5) {
+      currentAttempt += keyLetter;
+    }
+  }
+  updateGrid();
+}
 
 function buildGrid() {
   for (let i = 0; i < 6; i++) {
@@ -26,32 +47,28 @@ function buildGrid() {
   }
 }
 
-buildGrid();
-
-let counter = 0;
-updateGrid();
-
 function updateGrid() {
   let row = grid.firstChild;
-  for (let attempt of attempts) {
-    drawPastAttempt(row, attempt);
+  for (let attempt of history) {
+    drawAttempt(row, attempt, false);
     row = row.nextSibling;
   }
-  drawCurrentAttmpt(row, currentAttempt);
+  drawAttempt(row, currentAttempt, true);
 }
 
-function drawPastAttempt(row, attempt) {
+function drawAttempt(row, attempt, isCurrent) {
   for (let i = 0; i < 5; i++) {
     let cell = row.children[i];
-    cell.textContent = attempt[i];
-    cell.style.backgroundColor = getBgColor(attempt, i);
-  }
-}
-
-function drawCurrentAttmpt(row, attempt) {
-  for (let i = 0; i < 5; i++) {
-    let cell = row.children[i];
-    cell.textContent = attempt[i] ?? "";
+    if (attempt[i] !== undefined) {
+      cell.textContent = attempt[i];
+    } else {
+      cell.innerHTML = '<div style="opacity:0">x</div>';
+    }
+    if (isCurrent) {
+      cell.style.backgroundColor = "";
+    } else {
+      cell.style.backgroundColor = getBgColor(attempt, i);
+    }
   }
 }
 
@@ -60,12 +77,12 @@ function getBgColor(attempt, i) {
   let attemptLetter = attempt[i];
   console.log(currectLetter, attemptLetter);
 
-  if (!secret.indexOf(attemptLetter) == -1) {
-    return "darkgray";
+  if (attemptLetter === undefined || secret.indexOf(attemptLetter) === -1) {
+    return "#3d4054";
   }
 
   if (currectLetter === attemptLetter) {
-    return "green";
+    return "#79b851";
   }
-  return "yellow";
+  return "#f3c237";
 }
