@@ -3,9 +3,12 @@
 </head>
 
 <body>
+    <div id="screen">
 
-    <h1>Wordle</h1>
-    <div id="grid"></div>
+        <h1>Wordle</h1>
+        <div id="grid"></div>
+        <div id="keyboard"></div>
+    </div>
     <style>
         body,
         html {
@@ -16,8 +19,38 @@
             text-transform: uppercase;
         }
 
+        html,
+        body,
+        #screen {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
         h1 {
             font-size: 42px;
+        }
+
+        #grid {
+            flex: 1 1 auto;
+        }
+
+        #keyboard {
+            flex: none;
+            padding: 20px;
+            /* margin-top: 25px; */
+            /* position: fixed;
+            width: 100%;
+            bottom: 0; */
+        }
+
+        .button {
+            text-transform: uppercase;
+            padding: 15px;
+            margin: 3px;
+            border-radius: 10px;
+            border: none;
+
         }
 
         .cell {

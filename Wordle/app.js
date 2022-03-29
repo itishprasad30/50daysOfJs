@@ -1,4 +1,13 @@
-let wordList = ["apple", "horse", "music", "pintu", "water", "pizza"];
+let wordList = [
+  "apple",
+  "hello",
+  "horse",
+  "music",
+  "pintu",
+  "water",
+  "pizza",
+  "piano",
+];
 let randomIndex = Math.floor(Math.random() * wordList.length);
 let secret = wordList[randomIndex];
 let history = [];
@@ -6,11 +15,16 @@ let currentAttempt = "";
 let counter = 0;
 
 let grid = document.getElementById("grid");
-
+let keyBoard = document.getElementById("keyboard");
 buildGrid();
+buildKeyboard();
+
 updateGrid();
 window.addEventListener("keydown", handleKey);
 function handleKey(e) {
+  if (e.ctrlKey || e.metaKey || e.altKey) {
+    return;
+  }
   let keyLetter = e.key.toLowerCase();
   if (keyLetter === "enter") {
     //   todo
@@ -26,7 +40,7 @@ function handleKey(e) {
   } else if (keyLetter === "backspace") {
     //   ...
     currentAttempt = currentAttempt.slice(0, currentAttempt.length - 1);
-  } else if (/[a-z]/.test(keyLetter)) {
+  } else if (/^[a-z]$/.test(keyLetter)) {
     if (currentAttempt.length < 5) {
       currentAttempt += keyLetter;
     }
@@ -85,4 +99,28 @@ function getBgColor(attempt, i) {
     return "#79b851";
   }
   return "#f3c237";
+}
+let BLACK = '#111'  
+let GREY = "#3d4054";
+let GREEN = '#79b851'
+let YEllow = '#f3c237'
+
+function buildKeyboard() {
+  buildKeyboardRow("qwertyuiop", false);
+  buildKeyboardRow("asdghjl", false);
+  buildKeyboardRow("zxcvbnm", true);
+}
+function buildKeyboardRow(letters) {
+  let row = document.createElement("div");
+  for (let letter of letters) {
+    let button = document.createElement("button");
+    button.className = "button";
+    button.textContent = letter;
+
+    button.onclick = () => {
+      // todo
+    };
+    row.appendChild(button);
+  }
+  keyBoard.appendChild(row);
 }
