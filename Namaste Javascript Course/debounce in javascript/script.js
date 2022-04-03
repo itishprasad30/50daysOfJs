@@ -3,19 +3,21 @@ const defaultText = document.getElementById("default");
 const debouceText = document.getElementById("debouce");
 const thorttleText = document.getElementById("thorttle");
 
-input.addEventListener("input", (e) => {
-  defaultText.textContent = e.target.value;
-  updateDebouceText(e.target.value);
-  updateThorttleText(e.target.value);
-});
+// input.addEventListener("input", (e) => {
+//   defaultText.textContent = e.target.value;
+//   updateDebouceText(e.target.value);
+//   updateThorttleText(e.target.value);
+// });
 
 const updateDebouceText = debouce((text) => {
-  debouceText.textContent = text;
-});
+  //   debouceText.textContent = text;
+  incrementCount(debouceText);
+}, 100);
 
 const updateThorttleText = thorttle((text) => {
-  thorttleText.textContent = text;
-});
+  //   thorttleText.textContent = text;
+  incrementCount(thorttleText);
+}, 100);
 
 function debouce(cb, delay = 1000) {
   let timer;
@@ -60,4 +62,13 @@ function thorttle(cb, delay = 1000) {
     // }, delay);
     setTimeout(timeoutFunc, delay);
   };
+}
+
+document.addEventListener("mousemove", (e) => {
+  incrementCount(defaultText);
+  updateDebouceText();
+  updateThorttleText();
+});
+function incrementCount(element) {
+  element.textContent = (parseInt(element.innerText) || 0) + 1;
 }
