@@ -32,6 +32,14 @@ const sumReduce = arr.reduce((acc,curr) =>{
 
 console.log(sumReduce)
 
+// or 
+const maxReduce  = arr.reduce((acc,curr)=> {
+    if(curr > acc){
+        acc = curr
+    }
+    return acc
+},0)
+console.log(maxReduce) // 8
 
 
 //// Real world proble to use
