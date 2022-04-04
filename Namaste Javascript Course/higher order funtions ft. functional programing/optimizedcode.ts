@@ -14,7 +14,16 @@ const calculate = function  (radius,logic) {
 	}
 	return output
 }
-
+console.log(radius.map(area))
 console.log(calculate(radius,area))
 console.log(calculate(radius,circumference))
 
+// polyfill to map 
+Array.prototype.calculate = function(logic) {
+	const output = []
+	for (let i = 0; i < this.length; i++) {
+		output.push(logic(this[i]))
+	}
+	return output
+}
+console.log(radius.calculate(area))
