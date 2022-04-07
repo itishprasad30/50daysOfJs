@@ -9,6 +9,27 @@ const thorttleText = document.getElementById("thorttle");
 //   updateThorttleText(e.target.value);
 // });
 
+function poopityScoop() {
+  window.ononline = (event) => {
+    console.log("Back Online");
+    let element = document.getElementById("message");
+    element.classList.remove("warning");
+    element.classList.add("info");
+    element.textContent = "Back Online";
+    setTimeout(() => {
+      element.textContent = "";
+      element.classList.remove("info");
+    }, 2000);
+  };
+
+  window.onoffline = (event) => {
+    console.log("Connection Lost");
+    let element = document.getElementById("message");
+    element.classList.add("warning");
+    element.textContent = "Connection Lost";
+  };
+}
+poopityScoop();
 const updateDebouceText = debouce((text) => {
   //   debouceText.textContent = text;
   incrementCount(debouceText);
