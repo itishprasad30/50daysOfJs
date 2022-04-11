@@ -43,7 +43,7 @@ console.log(maxReduce) // 8
 
 
 //// Real world proble to use
-const users = [
+const users= [
 	{firstName:'itish',lastName:'prasad',age:22},
 	{firstName:'elon',lastName:'musk',age:38},
 	{firstName:'abel',lastName:'tesfaye',age:32},
@@ -53,12 +53,12 @@ const users = [
 
 // list full name 
 // map
-const resultMap = users.map(x => `${x.firstName} ${x.lastName}`)
+const resultMap:string[] = users.map(x => `${x.firstName} ${x.lastName}`)
 console.log(resultMap)
 
 // {22:1,38:1,32:2,25:1}
 // use reduce
-const resultReduce = users.reduce((acc,curr) =>{
+const resultReduce:object = users.reduce((acc,curr) =>{
 	if(acc[curr.age]){
 		acc[curr.age] = ++ acc[curr.age]
 		
