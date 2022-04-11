@@ -7,7 +7,7 @@ console.log(output)
 
 // filter is filter from array
 
-const filterdata = arr.filter(x => {
+const filterdata:number[] = arr.filter(x => {
 	return x %2 == 0 // even data
 }) 
 console.log(filterdata)
@@ -22,7 +22,7 @@ const sumFun = function (arr) {
 	return sum
 	
 }
-const sum =sumFun(arr)
+const sum:number =sumFun(arr)
 console.log(sum)
 // for max and sum
 const sumReduce = arr.reduce((acc,curr) =>{
@@ -72,5 +72,5 @@ console.log(resultReduce)
 
 
 // problem find age < 30 and print fullname
-const result3 = users.filter(x => x.age < 30).map(x => x.firstName + ' ' + x.lastName )	
+const result3:string[] = users.filter(x => x.age < 30).map(x => x.firstName + ' ' + x.lastName )	
 console.log(result3)
