@@ -1,3 +1,5 @@
+// Javascript debouce and thorttle interview questions IMP
+
 const input = document.querySelector("input");
 const defaultText = document.getElementById("default");
 const debouceText = document.getElementById("debouce");
